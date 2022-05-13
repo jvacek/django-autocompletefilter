@@ -1,5 +1,5 @@
 import django
-from django.contrib.admin.filters import RelatedFieldListFilter
+from django.contrib.admin.filters import RelatedFieldListFilter, RelatedOnlyFieldListFilter
 from django.urls import NoReverseMatch, reverse
 
 
@@ -18,7 +18,7 @@ def get_request():
         del frame
 
 
-class AutocompleteListFilter(RelatedFieldListFilter):
+class AutocompleteListFilterMixin():
     """Admin list_filter using autocomplete select 2 widget."""
 
     template = "admin/filter_autocomplete.html"
@@ -92,3 +92,9 @@ class AutocompleteListFilter(RelatedFieldListFilter):
             "model_name": model._meta.model_name,
             "field_name": self.field.name,
         }
+
+class AutocompleteListFilter(AutocompleteListFilterMixin, RelatedFieldListFilter):
+    pass
+
+class AutocompleteListFilter(AutocompleteListFilterMixin, RelatedOnlyFieldListFilter):
+    pass
