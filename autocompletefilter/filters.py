@@ -18,7 +18,7 @@ def get_request():
         del frame
 
 
-class AutocompleteListFilterMixin():
+class AutocompleteListMixin():
     """Admin list_filter using autocomplete select 2 widget."""
 
     template = "admin/filter_autocomplete.html"
@@ -93,8 +93,8 @@ class AutocompleteListFilterMixin():
             "field_name": self.field.name,
         }
 
-class AutocompleteListFilter(AutocompleteListFilterMixin, RelatedFieldListFilter):
+class AutocompleteListFilter(AutocompleteListMixin, RelatedFieldListFilter):
     pass
 
-class AutocompleteRelatedOnlyListFilter(AutocompleteListFilterMixin, RelatedOnlyFieldListFilter):
+class AutocompleteRelatedOnlyListFilter(AutocompleteListMixin, RelatedOnlyFieldListFilter):
     pass
