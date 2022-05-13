@@ -96,5 +96,5 @@ class AutocompleteListFilterMixin():
 class AutocompleteListFilter(AutocompleteListFilterMixin, RelatedFieldListFilter):
     pass
 
-class AutocompleteListFilter(AutocompleteListFilterMixin, RelatedOnlyFieldListFilter):
+class AutocompleteRelatedOnlyListFilter(AutocompleteListFilterMixin, RelatedOnlyFieldListFilter):
     pass
